@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Animation Studio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>My Animations</h1>
+        <p>Watch and Download my latest work</p>
+    </header>
+
+    <main>
+        <section class="player-container">
+            <video id="mainPlayer" controls poster="thumbnails/default.jpg">
+                <source id="videoSource" src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <h2 id="currentTitle">Select a Video</h2>
+            <a id="downloadBtn" href="" download class="download-link">Download This Animation</a>
+        </section>
+
+        <hr>
+
+        <div class="grid">
+            <div class="video-card" onclick="changeVideo('videos/animation1.mp4', 'My First Animation', 'thumbnails/thumb1.jpg')">
+                <img src="thumbnails/thumb1.jpg" alt="Thumb 1">
+                <h3>My First Animation</h3>
+            </div>
+
+            <div class="video-card" onclick="changeVideo('videos/animation2.mp4', 'Character Walk Cycle', 'thumbnails/thumb2.jpg')">
+                <img src="thumbnails/thumb2.jpg" alt="Thumb 2">
+                <h3>Character Walk Cycle</h3>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function changeVideo(src, title, poster) {
+            const video = document.getElementById('mainPlayer');
+            const source = document.getElementById('videoSource');
+            const titleDisplay = document.getElementById('currentTitle');
+            const downloadBtn = document.getElementById('downloadBtn');
+
+            source.src = src;
+            video.poster = poster;
+            titleDisplay.innerText = title;
+            downloadBtn.href = src; // Sets the download link to the video path
+            
+            video.load();
+            video.play();
+        }
+    </script>
+</body>
+</html>
